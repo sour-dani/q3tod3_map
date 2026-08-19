@@ -12,7 +12,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v7
-
+      
       - name: Compile
         shell: bash
         run: |
@@ -30,13 +30,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Configure Dependencies
+        uses: ilammy/msvc-dev-cmd@v1
+
       - name: Compile
-        shell: bash
         run: |
-          g++ q3tod3_map.cpp -o q3tod3_map.exe
-      
+          devenv q3tod3_map.sln /build Release
+
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-gcc-windows
-          path: q3tod3_map.exe
+          name: q3tod3_map-msvc-windows
+          path: build/Release/bin/q3tod3_map.exe
