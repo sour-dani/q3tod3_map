@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "about.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,5 +17,12 @@ MainWindow::~MainWindow()
 void MainWindow::on_convertBtn_clicked()
 {
 
+}
+
+
+void MainWindow::on_actionAbout_triggered()
+{
+    aboutDialog = new about();
+    aboutDialog->show();
 }
 

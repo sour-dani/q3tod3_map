@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "about.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,7 +21,10 @@ public:
 private slots:
     void on_convertBtn_clicked();
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
+    about *aboutDialog;
 };
 #endif // MAINWINDOW_H

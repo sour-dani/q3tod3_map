@@ -1,19 +1,22 @@
 #ifndef ABOUT_H
 #define ABOUT_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class about;
 }
 
-class about : public QWidget
+class about : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit about(QWidget *parent = nullptr);
+    explicit about(QDialog *parent = nullptr);
     ~about();
+
+private slots:
+    void on_closeBtn_clicked();
 
 private:
     Ui::about *ui;
