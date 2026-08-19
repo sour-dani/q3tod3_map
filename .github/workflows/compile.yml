@@ -7,7 +7,7 @@ on:
     branches: [ "main", "develop" ]
 
 jobs:
-  build-windows:
+  build-linux:
     runs-on: ubuntu-22.04
     
     steps:
@@ -24,7 +24,7 @@ jobs:
           name: q3tod3_map-gcc-linux
           path: q3tod3_map
     
-  build-linux:
+  build-windows:
     runs-on: windows-latest
 
     steps:
