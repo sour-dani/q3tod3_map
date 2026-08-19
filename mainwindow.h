@@ -23,6 +23,7 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void closeEvent(QCloseEvent *_);
 private:
     Ui::MainWindow *ui;
     about *aboutDialog;
