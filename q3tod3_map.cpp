@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
 
     ifstream in(argv[1]);
     if (!in) {
-        cout << "Can't open input" << endl;
+        cout << "Can't open input map" << endl;
         return 1;
     }
 
@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
 
     ofstream out(argv[2]);
     if (!out) {
-        cout << "Can't open output" << endl;
+        cout << "Can't open output map" << endl;
         return 1;
     }
 
