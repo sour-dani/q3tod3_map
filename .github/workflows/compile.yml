@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map-msvc-windows
-          path: build/Release/bin/q3tod3_map.exe
+          path: q3tod3_map/x64/Release/q3tod3_map.exe
