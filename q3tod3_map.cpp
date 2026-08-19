@@ -58,8 +58,18 @@ float signed_zero(float v) {
 }
 
 int main(int argc, char* argv[]) {
+    cout << "q3tod3_map 0.1.0 ";
+    #ifdef __WIN64__
+        cout << "(x86_64-pc-windows-msvc)";
+    #elif __linux__
+        cout << "(x86_64-unknown-linux-gnu)";
+    #endif
+    cout << endl;
+    cout << "Copyright (C) 2025 motorsep" << endl;
+    cout << "License GPLv3" << endl;
+
     if (argc < 3) {
-        cout << "Usage: converter input.map output.map" << endl;
+        cout << endl << "Usage: q3tod3_map input.map output.map" << endl;
         return 1;
     }
 
