@@ -21,7 +21,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-gcc-linux
+          name: q3tod3_map-x86_64-gcc-linux
           path: q3tod3_map
           retention-days: 1
           if-no-files-found: error
@@ -42,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-msvc-windows
+          name: q3tod3_map-x86_64-msvc-windows
           path: x64/Release/q3tod3_map.exe
           retention-days: 1
           if-no-files-found: error
