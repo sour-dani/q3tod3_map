@@ -21,7 +21,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-linux
+          name: q3tod3_map-gcc-linux
           path: q3tod3_map
     
   build-linux:
@@ -38,5 +38,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-windows
+          name: q3tod3_map-gcc-windows
           path: q3tod3_map.exe
