@@ -23,6 +23,8 @@ jobs:
         with:
           name: q3tod3_map-gcc-linux
           path: q3tod3_map
+          retention-days: 1
+          if-no-files-found: error
     
   build-windows:
     runs-on: windows-latest
@@ -42,3 +44,5 @@ jobs:
         with:
           name: q3tod3_map-msvc-windows
           path: q3tod3_map/x64/Release/q3tod3_map.exe
+          retention-days: 1
+          if-no-files-found: error
