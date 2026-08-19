@@ -16,13 +16,13 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          g++ g3tod3_map.cpp -o g3tod3_map
+          g++ q3tod3_map.cpp -o q3tod3_map
       
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: g3tod3_map-linux
-          path: g3tod3_map
+          name: q3tod3_map-linux
+          path: q3tod3_map
     
   build-linux:
     runs-on: windows-latest
@@ -33,10 +33,10 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          g++ g3tod3_map.cpp -o g3tod3_map.exe
+          g++ q3tod3_map.cpp -o q3tod3_map.exe
       
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: g3tod3_map-windows
-          path: g3tod3_map.exe
+          name: q3tod3_map-windows
+          path: q3tod3_map.exe
