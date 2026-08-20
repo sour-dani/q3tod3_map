@@ -1,8 +1,13 @@
 # q3tod3_map
-Quake 3 map to Doom 3 map converter (Windows console app).
+Convert Quake 1-3 map files to Doom 3 and Quake 4 map files from the command prompt or terminal
 
-Initial release. Can convert Quake 3 map with brushes into Doom 3 map.
+## Usage
+`q3tod3_map.exe q3.map d3.map`
 
-Compile with MSVC2022.
+## Building
 
-Usage: q3tod3_map.exe q3.map d3.map
+### Windows
+Compile the `q3to3d_map.sln` file in Visual Studio 2022 and or MSVC2022
+
+### Linux
+Compile in `gcc` via `g++ q3to3d_map.cpp -o q3to3d_map`
