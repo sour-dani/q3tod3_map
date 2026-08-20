@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,6 +7,7 @@
 #include <cmath>
 #include <map>
 #include <iomanip>
+#include <filesystem>
 
 struct Vec3 {
     float x, y, z;
@@ -63,6 +65,9 @@ int main(int argc, char* argv[]) {
     Brush cur_br;
     int level = 0;
     bool in_brush = false;
+    std::string usage = "Usage: q3tod3_map input.map [output.map]";
+    std::string infile = "";
+    std::string outfile = "";
 
     std::cout << "q3tod3_map 0.1.0 ";
     #ifdef __WIN64__
@@ -71,15 +76,27 @@ int main(int argc, char* argv[]) {
         std::cout << "(x86_64-unknown-linux-gnu)";
     #endif
     std::cout << std::endl;
-    std::cout << "Copyright (C) 2025 motorsep" << std::endl;
-    std::cout << "License GPLv3" << std::endl;
+    std::cout << "Copyright (C) 2025 motorsep - License GPLv3" << std::endl;
+    std::cout << "Modified by Sour Dani" << std::endl;
+    std::cout << std::endl;
 
-    if (argc < 3) {
-        cout << endl << "Usage: q3tod3_map input.map output.map" << endl;
+    if (argc > 2) outfile = argv[2];
+    if (argc == 2) {
+        if (strcmp(argv[1], "help") == 0 || strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
+            std::cout << usage << std::endl;
+            return 1;
+        } else {
+            outfile += "converted_" + std::filesystem::path(argv[1]).filename().string();
+        }
+    }
+    else if (argc < 2 || argc > 3) {
+        std::cout << usage << std::endl;
         return 1;
     }
 
-    std::ifstream in(argv[1]);
+    infile = argv[1];
+    std::cout << "Converting: " << infile << std::endl;
+    std::ifstream in(infile);
     if (!in) {
         std::cout << "Can't open input map" << std::endl;
         return 1;
@@ -194,6 +211,7 @@ int main(int argc, char* argv[]) {
         out << "}\n";
     }
     out.close();
+    std::cout << "Generated map: " + outfile << std::endl;
 
     return 0;
 }
