@@ -50,7 +50,7 @@ std::string to_str(float val) {
 
 float signed_zero(float v) {
     if (fabs(v) < 1e-6f) {
-        return (signbit(v) ? -0.0f : 0.0f);
+        return (std::signbit(v) ? -0.0f : 0.0f);
     }
     return v;
 }
@@ -149,7 +149,7 @@ int main(int argc, char* argv[]) {
     }
     in.close();
 
-    ofstream out(argv[2]);
+    std::ofstream out(outfile);
     if (!out) {
         std::cout << "Can't open output map" << std::endl;
         return 1;
