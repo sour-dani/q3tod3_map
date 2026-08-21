@@ -9,6 +9,8 @@
 #include <iomanip>
 #include <filesystem>
 
+using namespace std;
+
 struct Vec3 {
     float x, y, z;
     Vec3() : x(0), y(0), z(0) {}
@@ -31,86 +33,86 @@ struct Vec3 {
 
 struct Face {
     Vec3 p1, p2, p3;
-    std::string tex;
+    string tex;
     float offx, offy, rot, scalex, scaley;
 };
 
 struct Brush {
-    std::vector<Face> faces;
+    vector<Face> faces;
 };
 
 struct Entity {
-    std::map<std::string, std::string> props;
-    std::vector<Brush> brushes;
+    map<string, string> props;
+    vector<Brush> brushes;
 };
 
-std::string to_str(float val) {
-    std::stringstream ss;
-    ss << std::fixed << std::setprecision(6) << val;
+string to_str(float val) {
+    stringstream ss;
+    ss << fixed << setprecision(6) << val;
     return ss.str();
 }
 
 float signed_zero(float v) {
     if (fabs(v) < 1e-6f) {
-        return (std::signbit(v) ? -0.0f : 0.0f);
+        return (signbit(v) ? -0.0f : 0.0f);
     }
     return v;
 }
 
 int main(int argc, char* argv[]) {
 
-    std::vector<Entity> map_data;
-    std::string line;
+    vector<Entity> map_data;
+    string line;
     Entity cur_ent;
     Brush cur_br;
     int level = 0;
     bool in_brush = false;
-    std::string usage = "Usage: q3tod3_map input.map [output.map]";
-    std::string infile = "";
-    std::string outfile = "";
+    string usage = "Usage: q3tod3_map input.map [output.map]";
+    string infile = "";
+    string outfile = "";
 
-    std::cout << "q3tod3_map 0.1.0 ";
+    cout << "q3tod3_map 0.1.0 ";
     #ifdef __WIN64__
-        std::cout << "(x86_64-pc-windows-msvc)";
+        cout << "(x86_64-pc-windows-msvc)";
     #elif __linux__
-        std::cout << "(x86_64-unknown-linux-gnu)";
+        cout << "(x86_64-unknown-linux-gnu)";
     #endif
-    std::cout << std::endl;
-    std::cout << "Copyright (C) 2025 motorsep - License GPLv3" << std::endl;
-    std::cout << "Modified by Sour Dani" << std::endl;
-    std::cout << std::endl;
+    cout << endl;
+    cout << "Copyright (C) 2025 motorsep - License GPLv3" << endl;
+    cout << "Modified by Sour Dani" << endl;
+    cout << endl;
 
     if (argc > 2) outfile = argv[2];
     if (argc == 2) {
         if (strcmp(argv[1], "help") == 0 || strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
-            std::cout << usage << std::endl;
+            cout << usage << endl;
             return 1;
         } else {
-            std::string map_file = std::filesystem::path(argv[1]);
+            string map_file = filesystem::path(argv[1]);
             outfile += "converted_" + map_file;
         }
     }
     else if (argc < 2 || argc > 3) {
-        std::cout << usage << std::endl;
+        cout << usage << endl;
         return 1;
     }
 
     infile = argv[1];
-    std::cout << "Converting: " << infile << std::endl;
-    std::ifstream in(infile);
+    cout << "Converting: " << infile << endl;
+    ifstream in(infile);
     if (!in) {
-        std::cout << "Can't open input map" << std::endl;
+        cout << "Can't open input map" << endl;
         return 1;
     }
 
     while (getline(in, line)) {
         size_t comm = line.find("//");
-        if (comm != std::string::npos) line = line.substr(0, comm);
+        if (comm != string::npos) line = line.substr(0, comm);
         size_t start = line.find_first_not_of(" \t");
-        if (start == std::string::npos) continue;
+        if (start == string::npos) continue;
         line = line.substr(start);
         size_t end = line.find_last_not_of(" \t");
-        if (end != std::string::npos) line = line.substr(0, end + 1);
+        if (end != string::npos) line = line.substr(0, end + 1);
         if (line.empty()) continue;
 
         if (line == "{") {
@@ -135,7 +137,7 @@ int main(int argc, char* argv[]) {
         }
         else if (in_brush) {
             Face f;
-            std::stringstream ss(line);
+            stringstream ss(line);
             char ch;
             ss >> ch;
             if (ch != '(') continue;
@@ -155,21 +157,21 @@ int main(int argc, char* argv[]) {
         else if (level == 1) {
             if (line[0] != '"') continue;
             size_t end_key = line.find('"', 1);
-            if (end_key == std::string::npos) continue;
-            std::string key = line.substr(1, end_key - 1);
+            if (end_key == string::npos) continue;
+            string key = line.substr(1, end_key - 1);
             size_t start_val = line.find('"', end_key + 1);
-            if (start_val == std::string::npos) continue;
+            if (start_val == string::npos) continue;
             size_t end_val = line.rfind('"');
-            if (end_val == std::string::npos) continue;
-            std::string val = line.substr(start_val + 1, end_val - start_val - 1);
+            if (end_val == string::npos) continue;
+            string val = line.substr(start_val + 1, end_val - start_val - 1);
             cur_ent.props[key] = val;
         }
     }
     in.close();
 
-    std::ofstream out(outfile);
+    ofstream out(outfile);
     if (!out) {
-        std::cout << "Can't open output map" << std::endl;
+        cout << "Can't open output map" << endl;
         return 1;
     }
 
@@ -193,12 +195,12 @@ int main(int argc, char* argv[]) {
                 float sy = 1.0f / (f.scaley * 64.0f);
                 float ox = f.offx / 64.0f;
                 float oy = f.offy / 64.0f;
-                std::string s_sx = to_str(sx);
-                std::string s_ox = to_str(ox);
-                std::string s_sy = to_str(sy);
-                std::string s_oy = to_str(oy);
-                std::string proj = "( ( " + s_sx + " 0 " + s_ox + " ) ( 0 " + s_sy + " " + s_oy + " ) )";
-                std::string tex_name;
+                string s_sx = to_str(sx);
+                string s_ox = to_str(ox);
+                string s_sy = to_str(sy);
+                string s_oy = to_str(oy);
+                string proj = "( ( " + s_sx + " 0 " + s_ox + " ) ( 0 " + s_sy + " " + s_oy + " ) )";
+                string tex_name;
                 if (f.tex[0] == '_') {
                     tex_name = f.tex;
                 }
@@ -212,7 +214,7 @@ int main(int argc, char* argv[]) {
         out << "}\n";
     }
     out.close();
-    std::cout << "Generated map: " + outfile << std::endl;
+    cout << "Generated map: " + outfile << endl;
 
     return 0;
 }
