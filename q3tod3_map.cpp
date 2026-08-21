@@ -86,7 +86,8 @@ int main(int argc, char* argv[]) {
             std::cout << usage << std::endl;
             return 1;
         } else {
-            outfile += "converted_" + std::filesystem::path(argv[1]).filename().string();
+            std::string map_file = std::filesystem::path(argv[1]);
+            outfile += "converted_" + map_file;
         }
     }
     else if (argc < 2 || argc > 3) {
