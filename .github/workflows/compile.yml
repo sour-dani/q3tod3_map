@@ -36,11 +36,10 @@ jobs:
         uses: TheMrMilchmann/setup-msvc-dev@v4
         with:
           arch: x64
-          toolset: 17
 
       - name: Compile
         run: |
-          devenv q3tod3_map.sln /build Release
+          msbuild q3tod3_map.sln /p:Configuration=Release
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
