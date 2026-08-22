@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
             cout << usage << endl;
             return 1;
         } else {
-            string map_file = filesystem::path(argv[1]);
+            string map_file = filesystem::path(argv[1]).generic_string();
             outfile += "converted_" + map_file;
         }
     }
