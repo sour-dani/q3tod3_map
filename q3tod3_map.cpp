@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
     std::string infile = "";
     std::string outfile = "";
 
-    std::cout<< "q3tod3_map 0.1.0 ";
+    std::cout<< "q3tod3_map 0.1.1 ";
     #ifdef __WIN64__
         std::cout<< "(x86_64-pc-windows-msvc)";
     #elif __linux__
