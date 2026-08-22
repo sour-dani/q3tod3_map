@@ -16,7 +16,7 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          g++ q3tod3_map.cpp -o q3tod3_map
+          g++ q3tod3_map.cpp -o q3tod3_map -std=c++17
       
       - name: Upload artifact
         uses: actions/upload-artifact@v7
