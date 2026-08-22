@@ -35,6 +35,7 @@ jobs:
       - name: Configure Dependencies
         uses: TheMrMilchmann/setup-msvc-dev@v4
         with:
+          arch: x64
           toolset: 17
 
       - name: Compile
