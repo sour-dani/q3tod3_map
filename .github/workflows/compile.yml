@@ -33,9 +33,9 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Configure Dependencies
-        uses: ilammy/msvc-dev-cmd@v1
+        uses: TheMrMilchmann/setup-msvc-dev@v4
         with:
-          toolset: 17.0
+          toolset: 17
 
       - name: Compile
         run: |
