@@ -1,32 +1,20 @@
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
-SOURCES += \
-    about.cpp \
-    main.cpp \
-    mainwindow.cpp
-
-HEADERS += \
-    about.h \
-    mainwindow.h
-
-FORMS += \
-    about.ui \
-    mainwindow.ui
+TEMPLATE = subdirs
+SUBDIRS = gui cli shared
+gui.subdir = src/gui
+cli.subdir = src/cli
+shared.subdir = src/shared
+src/cli.depends = shared
+src/gui.depends = shared
 
 TRANSLATIONS += \
-    q3tod3_map_en_US.ts
+    locales/q3tod3_map_en_US.ts
 CONFIG += lrelease
 CONFIG += embed_translations
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH += src/shared

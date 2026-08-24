@@ -7,7 +7,7 @@
 #include <cmath>
 #include <map>
 #include <iomanip>
-#include <filesystem>
+#include "q3tod3_map.h"
 
 struct Vec3 {
     float x, y, z;
@@ -57,7 +57,7 @@ float signed_zero(float v) {
     return v;
 }
 
-int main(int argc, char* argv[]) {
+void convert(std::string infile, std::string outfile) {
 
     std::vector<Entity> map_data;
     std::string line;
@@ -65,42 +65,11 @@ int main(int argc, char* argv[]) {
     Brush cur_br;
     int level = 0;
     bool in_brush = false;
-    std::string usage = "Usage: q3tod3_map input.map [output.map]";
-    std::string infile = "";
-    std::string outfile = "";
 
-    std::cout<< "q3tod3_map 0.1.1 ";
-    #ifdef __WIN64__
-        std::cout<< "(x86_64-pc-windows-msvc)";
-    #elif __linux__
-        std::cout<< "(x86_64-unknown-linux-gnu)";
-    #endif
-    std::cout<< std::endl;
-    std::cout<< "Copyright (C) 2025 motorsep - License GPLv3" << std::endl;
-    std::cout<< "Modified by Sour Dani" << std::endl;
-    std::cout<< std::endl;
 
-    if (argc > 2) outfile = argv[2];
-    if (argc == 2) {
-        if (strcmp(argv[1], "help") == 0 || strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
-            std::cout<< usage << std::endl;
-            return 1;
-        } else {
-            std::string map_file = std::filesystem::path(argv[1]).generic_string();
-            outfile += "converted_" + map_file;
-        }
-    }
-    else if (argc < 2 || argc > 3) {
-        std::cout<< usage << std::endl;
-        return 1;
-    }
-
-    infile = argv[1];
-    std::cout<< "Converting: " << infile << std::endl;
     std::ifstream in(infile);
     if (!in) {
-        std::cout<< "Can't open input map" << std::endl;
-        return 1;
+        throw "Can't open input map";
     }
 
     while (getline(in, line)) {
@@ -169,8 +138,7 @@ int main(int argc, char* argv[]) {
 
     std::ofstream out(outfile);
     if (!out) {
-        std::cout<< "Can't open output map" << std::endl;
-        return 1;
+        throw "Can't open output map";
     }
 
     out << "Version 2\n";
@@ -212,7 +180,4 @@ int main(int argc, char* argv[]) {
         out << "}\n";
     }
     out.close();
-    std::cout<< "Generated map: " + outfile << std::endl;
-
-    return 0;
 }
