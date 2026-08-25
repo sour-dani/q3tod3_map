@@ -8,5 +8,5 @@ struct Brush;
 struct Entity;
 std::string to_str(float val);
 float signed_zero(float v);
-void convert(std::string infile, std::string outfile);
+void convert_map(std::string infile, std::string outfile);
 #endif // Q3TOD3_MAP_H

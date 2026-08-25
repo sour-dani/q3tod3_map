@@ -1,4 +1,5 @@
+TEMPLATE = app
 SOURCES += \
     main.cpp
 
-# HEADERS += \
+include(../../q3tod3_map.pri)

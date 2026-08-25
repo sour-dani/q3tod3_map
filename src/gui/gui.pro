@@ -1,5 +1,4 @@
 QT       += core gui
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -18,3 +17,5 @@ HEADERS += \
 FORMS += \
     about.ui \
     mainwindow.ui
+
+include(../../q3tod3_map.pri)

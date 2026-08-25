@@ -57,7 +57,7 @@ float signed_zero(float v) {
     return v;
 }
 
-void convert(std::string infile, std::string outfile) {
+void convert_map(std::string infile, std::string outfile) {
 
     std::vector<Entity> map_data;
     std::string line;
