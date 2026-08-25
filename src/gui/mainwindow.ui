@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>480</height>
+    <width>550</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,20 +18,20 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>700</width>
-    <height>480</height>
+    <width>550</width>
+    <height>350</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>700</width>
-    <height>480</height>
+    <width>550</width>
+    <height>350</height>
    </size>
   </property>
   <property name="baseSize">
    <size>
-    <width>700</width>
-    <height>480</height>
+    <width>550</width>
+    <height>350</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -46,43 +46,64 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QListView" name="mapList"/>
+        <widget class="QListWidget" name="mapListWidget">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ContiguousSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectItems</enum>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QWidget" name="widget" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="removeMapBtn">
-            <property name="text">
-             <string>Remove map</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="addMapsBtn">
-            <property name="text">
-             <string>Add maps</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="btnsLayout">
+            <item>
+             <layout class="QHBoxLayout" name="mapChooseLayout">
+              <item>
+               <widget class="QPushButton" name="addMapsBtn">
+                <property name="text">
+                 <string>Add maps</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="removeMapBtn">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Remove maps</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="convertBtn">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Convert maps</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
        </item>
       </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="convertBtn">
-      <property name="text">
-       <string>Convert</string>
-      </property>
      </widget>
     </item>
    </layout>
@@ -92,7 +113,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>700</width>
+     <width>550</width>
      <height>20</height>
     </rect>
    </property>
