@@ -68,7 +68,7 @@ void convert_map(std::string infile, std::string outfile) {
 
     std::ifstream in(infile);
     if (!in) {
-        throw "Can't open input map";
+        throw "Can't open input map:\n\n" + outfile;
     }
 
     while (getline(in, line)) {
@@ -137,7 +137,7 @@ void convert_map(std::string infile, std::string outfile) {
 
     std::ofstream out(outfile);
     if (!out) {
-        throw "Can't open output map";
+        throw "Can't open output map:\n\n" + outfile;
     }
 
     out << "Version 2\n";

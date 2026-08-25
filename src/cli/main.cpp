@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
         convert_map(infile, outfile);
         std::cout << "Generated map: " + outfile << std::endl;
     }
-    catch (const char* msg) {
+    catch (const std::string msg) {
         std::cout << msg;
         return 1;
     }
