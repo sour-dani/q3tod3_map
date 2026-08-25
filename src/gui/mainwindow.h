@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "about.h"
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,10 @@ private slots:
     void on_actionAbout_triggered();
 
     void closeEvent(QCloseEvent *_);
+    void on_addMapsBtn_clicked();
+
+    void on_removeMapBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     about *aboutDialog;
