@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>About q3tod3_map</string>
+    <string>About q3tod3_map_gui v0.1.0</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
