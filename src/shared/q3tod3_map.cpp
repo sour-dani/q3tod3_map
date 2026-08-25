@@ -66,7 +66,6 @@ void convert_map(std::string infile, std::string outfile) {
     int level = 0;
     bool in_brush = false;
 
-
     std::ifstream in(infile);
     if (!in) {
         throw "Can't open input map";

@@ -42,7 +42,7 @@
     <item>
      <widget class="QGroupBox" name="fileBox">
       <property name="title">
-       <string>Files to convert</string>
+       <string>Map files to convert</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -65,7 +65,7 @@
               <item>
                <widget class="QPushButton" name="addMapsBtn">
                 <property name="text">
-                 <string>Add maps</string>
+                 <string>Add</string>
                 </property>
                </widget>
               </item>
@@ -75,7 +75,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="text">
-                 <string>Remove maps</string>
+                 <string>Remove</string>
                 </property>
                </widget>
               </item>
@@ -94,7 +94,7 @@
                <bool>false</bool>
               </property>
               <property name="text">
-               <string>Convert maps</string>
+               <string>Convert</string>
               </property>
              </widget>
             </item>

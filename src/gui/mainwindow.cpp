@@ -5,6 +5,7 @@
 #include <QListWidget>
 #include <QDebug>
 #include <Qt>
+#include "q3tod3_map.cpp"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -18,9 +19,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_convertBtn_clicked()
 {
-    for (int i = 0; i < ui->mapListWidget->count(); i++){
-        qDebug() << "converted: " << ui->mapListWidget->item(i)->text();
+    if (ui->mapListWidget->count() > 0) {
+        std::string infile = "";
+        std::string outfile = "";
+
+        for (int i = 0; i < ui->mapListWidget->count(); i++){
+            infile = ui->mapListWidget->item(i)->text().toStdString();
+            qDebug() << "converted: " << QString::fromStdString(infile);
+
+            std::string map_file = std::filesystem::path(infile).filename().generic_string();
+            qDebug() << "filename: " << QString::fromStdString(map_file);
+
+            outfile = std::filesystem::path(infile).remove_filename().generic_string();
+            outfile += "converted_" + map_file;
+            qDebug() << "outfile: " << QString::fromStdString(outfile);
+
+            convert_map(infile, outfile);
+        }
     }
+
 }
 
 void MainWindow::on_actionAbout_triggered()
@@ -55,7 +72,6 @@ void MainWindow::on_addMapsBtn_clicked()
         ui->convertBtn->setEnabled(true);
     }
 }
-
 
 void MainWindow::on_removeMapBtn_clicked()
 {
