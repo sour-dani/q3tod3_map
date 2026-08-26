@@ -52,7 +52,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.4.*'
+          version: '6.5.*'
           target: 'desktop'
           arch: 'win64_msvc2022_64'
 
