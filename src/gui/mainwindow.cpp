@@ -73,7 +73,7 @@ void MainWindow::on_actionAbout_triggered()
     aboutDialog->show();
 }
 
-void MainWindow::closeEvent(QCloseEvent *_)
+void MainWindow::closeEvent([[maybe_unused]] QCloseEvent *event)
 {
     QCoreApplication::exit();
 }
