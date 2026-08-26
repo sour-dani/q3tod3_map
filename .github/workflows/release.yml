@@ -5,6 +5,8 @@ on:
         description: 'Github Release Tag'
         required: true
 
+run-name: Release ${{ inputs.tag }} (${{ github.sha }})
+
 jobs:
   release-linux:
     name: Release Linux ${{ inputs.tag }}
