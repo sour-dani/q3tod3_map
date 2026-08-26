@@ -29,8 +29,9 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          qmake6 -o build
+          [ -e build ] || mkdir build
           cd build
+          qmake6 ../
           make
 
       - name: Upload CLI to release
@@ -71,8 +72,9 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          qmake6 -o build
+          [ -e build ] || mkdir build
           cd build
+          qmake6 ../
           make
 
       - name: Upload CLI to release

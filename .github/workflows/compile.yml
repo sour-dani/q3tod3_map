@@ -30,8 +30,9 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          qmake6 -o build
+          [ -e build ] || mkdir build
           cd build
+          qmake6 ../
           make
 
       - name: Upload artifact
@@ -58,7 +59,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.4.2'
+          version: '6.8.*'
           target: 'desktop'
           arch: 'win64_msvc2022_64'
 
@@ -70,8 +71,9 @@ jobs:
       - name: Compile
         shell: bash
         run: |
-          qmake6 -o build
+          [ -e build ] || mkdir build
           cd build
+          qmake6 ../
           make
 
       - name: Upload artifact
