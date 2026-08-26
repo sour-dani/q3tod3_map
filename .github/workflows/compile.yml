@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main", "develop" ]
 
-run-name: Compile (${{ github.sha }})
+run-name: Compile
 
 jobs:
   build-linux:
