@@ -71,8 +71,8 @@ jobs:
       - name: Compile
         working-directory: build
         run: |
+          cat q3tod3_map.sln
           msbuild q3tod3_map.sln
-          ls
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
