@@ -1,9 +1,9 @@
 CONFIG += c++17
 TEMPLATE = subdirs
-SUBDIRS = gui cli shared
+SUBDIRS = shared gui cli
+shared.subdir = src/shared
 gui.subdir = src/gui
 cli.subdir = src/cli
-shared.subdir = src/shared
 
 cli.depends = shared
 gui.depends = shared
