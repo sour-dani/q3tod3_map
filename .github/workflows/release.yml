@@ -8,6 +8,7 @@ on:
 jobs:
   release-linux:
     name: Release Linux ${{ inputs.tag }}
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v7
@@ -50,6 +51,7 @@ jobs:
 
   release-windows:
     name: Release Windows ${{ inputs.tag }}
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v7
