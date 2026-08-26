@@ -61,12 +61,16 @@ jobs:
         with:
           arch: x64
 
-      - name: Compile
+      - name: Create Makefiles
         shell: bash
         run: |
           [ -e build ] || mkdir build
           cd build
           qmake6 ../
+
+      - name: Compile
+        working-directory: build
+        run: |
           make
 
       - name: Upload CLI artifact
