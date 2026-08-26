@@ -19,13 +19,6 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      # - name: Install Dependencies
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y \
-      #       g++
-      #       make
-
       - name: Compile
         shell: bash
         run: |
@@ -64,10 +57,10 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2022_64'
 
-    # - name: Configure Dependencies
-    #   uses: TheMrMilchmann/setup-msvc-dev@v4
-    #   with:
-    #     arch: x64
+      - name: Configure Dependencies
+        uses: TheMrMilchmann/setup-msvc-dev@v4
+        with:
+          arch: x64
 
       - name: Compile
         shell: bash
