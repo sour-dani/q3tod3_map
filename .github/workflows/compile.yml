@@ -66,12 +66,12 @@ jobs:
         run: |
           [ -e build ] || mkdir build
           cd build
-          qmake6 ../
+          qmake6 -tp vc ../
 
       - name: Compile
         working-directory: build
         run: |
-          make
+          msbuild q3tod3_map.sln /p:Configuration=Release
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
