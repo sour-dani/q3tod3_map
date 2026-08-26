@@ -77,8 +77,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map_cli-x86_64-gcc-linux
-          path: build/src/cli/q3tod3_map
+          name: q3tod3_map_cli-x86_64-msvc-windows
+          path: build/src/cli/q3tod3_map.exe
           retention-days: 1
           if-no-files-found: error
 
@@ -86,6 +86,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map_gui-x86_64-msvc-windows
-          path: build/src/cli/q3tod3_map
+          path: build/src/gui/q3tod3_map_gui.exe
           retention-days: 1
           if-no-files-found: error
