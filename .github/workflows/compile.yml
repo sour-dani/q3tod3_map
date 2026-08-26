@@ -35,7 +35,7 @@ jobs:
           qmake6 ../
           make
 
-      - name: Upload artifact
+      - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map_cli-x86_64-gcc-linux
@@ -43,7 +43,7 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
-      - name: Upload artifact
+      - name: Upload GUI artifact
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map_gui-x86_64-gcc-linux
@@ -76,7 +76,7 @@ jobs:
           qmake6 ../
           make
 
-      - name: Upload artifact
+      - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map_cli-x86_64-msvc-windows
@@ -84,7 +84,7 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
-      - name: Upload artifact
+      - name: Upload GUI artifact
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map_gui-x86_64-msvc-windows
