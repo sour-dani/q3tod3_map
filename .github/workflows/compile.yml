@@ -1,6 +1,7 @@
 name: Compile
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main", "develop" ]
   pull_request:
@@ -12,17 +13,40 @@ jobs:
     
     steps:
       - uses: actions/checkout@v7
-      
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+            version: '6.4.2'
+            target: 'desktop'
+
+      # - name: Install Dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       g++
+      #       make
+
       - name: Compile
         shell: bash
         run: |
-          g++ q3tod3_map.cpp -o q3tod3_map -std=c++17
-      
+          qmake6 -o build
+          cd build
+          make
+
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-x86_64-gcc-linux
-          path: q3tod3_map
+          name: q3tod3_map_cli-x86_64-gcc-linux
+          path: build/src/cli/q3tod3_map
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: q3tod3_map_gui-x86_64-gcc-linux
+          path: build/src/cli/q3tod3_map
           retention-days: 1
           if-no-files-found: error
     
@@ -31,20 +55,37 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-
-      - name: Configure Dependencies
-        uses: TheMrMilchmann/setup-msvc-dev@v4
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
         with:
-          arch: x64
+          version: '6.4.2'
+          target: 'desktop'
+          arch: 'win64_msvc2022_64'
+
+      # - name: Configure Dependencies
+      #   uses: TheMrMilchmann/setup-msvc-dev@v4
+      #   with:
+      #     arch: x64
 
       - name: Compile
+        shell: bash
         run: |
-          msbuild q3tod3_map.sln /p:Configuration=Release
+          qmake6 -o build
+          cd build
+          make
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-x86_64-msvc-windows
-          path: x64/Release/q3tod3_map.exe
+          name: q3tod3_map_cli-x86_64-gcc-linux
+          path: build/src/cli/q3tod3_map
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: q3tod3_map_gui-x86_64-msvc-windows
+          path: build/src/cli/q3tod3_map
           retention-days: 1
           if-no-files-found: error
