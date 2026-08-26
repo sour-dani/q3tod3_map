@@ -1,0 +1,90 @@
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Github Release Tag'
+        required: true
+
+jobs:
+  release-linux:
+    name: Release Linux ${{ inputs.tag }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+            version: '6.4.2'
+            target: 'desktop'
+
+      # - name: Install Dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       g++
+      #       make
+
+      - name: Compile
+        shell: bash
+        run: |
+          qmake6 -o build
+          cd build
+          make
+
+      - name: Upload CLI to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/src/cli/q3tod3_map
+          tag_name: ${{ inputs.tag }}
+          draft: false
+          prerelease: true
+
+      - name: Upload GUI to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/src/gui/q3tod3_map_gui
+          tag_name: ${{ inputs.tag }}
+          draft: false
+          prerelease: true
+
+  release-windows:
+    name: Release Windows ${{ inputs.tag }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.4.2'
+          target: 'desktop'
+          arch: 'win64_msvc2022_64'
+
+    # - name: Configure Dependencies
+    #   uses: TheMrMilchmann/setup-msvc-dev@v4
+    #   with:
+    #     arch: x64
+
+      - name: Compile
+        shell: bash
+        run: |
+          qmake6 -o build
+          cd build
+          make
+
+      - name: Upload CLI to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/src/cli/q3tod3_map.exe
+          tag_name: ${{ inputs.tag }}
+          draft: false
+          prerelease: true
+
+      - name: Upload GUI to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/src/gui/q3tod3_map_gui.exe
+          tag_name: ${{ inputs.tag }}
+          draft: false
+          prerelease: true
