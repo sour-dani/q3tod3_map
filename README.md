@@ -23,7 +23,7 @@ q3tod4_map.exe input.map
 ### Windows
 - Open `q3tod3_map.pro` in Visual Studio 2022 using [Qt VS Tools](https://doc.qt.io/qtvstools/qtvstools-getting-started.html)
 
-        OR
+   **OR**
 
 - Open `q3tod3_map.pro` in Qt Creator
 
@@ -45,4 +45,4 @@ make
 ## Credits
 **motorsep** - q3tod3_map creator
 
-**Sour Dani** - q3tod4_map_gui creator and q3tod3_map modifications
+**Sour Dani** - q3tod4_map_gui creator and q3tod3_map (core and cli) modifications
