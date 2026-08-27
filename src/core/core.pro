@@ -1,4 +1,4 @@
-TARGET = q3tod3_map_shared
+TARGET = q3tod3_map_core
 TEMPLATE = lib
 CONFIG += staticlib
 SOURCES += \

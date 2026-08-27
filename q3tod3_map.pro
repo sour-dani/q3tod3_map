@@ -1,12 +1,12 @@
 CONFIG += c++17
 TEMPLATE = subdirs
-SUBDIRS = shared gui cli
-shared.subdir = src/shared
+SUBDIRS = core gui cli
+core.subdir = src/core
 gui.subdir = src/gui
 cli.subdir = src/cli
 
-cli.depends = shared
-gui.depends = shared
+cli.depends = core
+gui.depends = core
 
 CONFIG += lrelease
 CONFIG += embed_translations
