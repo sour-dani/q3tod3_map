@@ -6,6 +6,7 @@ about::about(QDialog *parent)
     , ui(new Ui::about)
 {
     ui->setupUi(this);
+    ui->aboutBox->setTitle(ui->aboutBox->title() + " v" + QApplication::applicationVersion());
 }
 
 about::~about()

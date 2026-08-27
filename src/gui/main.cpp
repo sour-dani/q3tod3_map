@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
+    QCoreApplication::setApplicationVersion(APP_VERSION);
     w.show();
     return a.exec();
 }
