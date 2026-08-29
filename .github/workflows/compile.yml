@@ -68,7 +68,7 @@ jobs:
         shell: bash
         run: |
           [ -e build ] || mkdir build
-          cd
+          cd build
           qmake6 ../
 
       - name: Compile
