@@ -73,7 +73,8 @@ jobs:
       - name: Compile
         working-directory: build
         run: |
-          make
+          ls
+          make .
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
