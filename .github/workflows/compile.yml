@@ -65,10 +65,9 @@ jobs:
           arch: x64
 
       - name: Create Makefiles
-        shell: bash
         run: |
-          [ -e build ] || mkdir build
-          cd build
+          IF exist build ( echo build exists ) ELSE ( mkdir build && echo build created)
+          dir build
           qmake6 ../
 
       - name: Compile
