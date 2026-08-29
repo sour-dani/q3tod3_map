@@ -66,8 +66,8 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          IF exist build ( echo build exists ) ELSE ( mkdir build && echo build created)
-          dir build
+          If(!(test-path -PathType container "build")){New-Item -ItemType Directory -Path "build"}
+          cd build
           qmake6 ../
 
       - name: Compile
