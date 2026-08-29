@@ -24,7 +24,7 @@ jobs:
         run: |
           [ -e build ] || mkdir build
           cd build
-          qmake6 ../
+          cmake ../
 
       - name: Compile
         working-directory: build
@@ -68,7 +68,7 @@ jobs:
         run: |
           If(!(test-path -PathType container "build")){New-Item -ItemType Directory -Path "build"}
           cd build
-          qmake6 ../
+          cmake ../
 
       - name: Compile
         working-directory: build
