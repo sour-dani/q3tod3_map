@@ -1,3 +1,19 @@
+# VSCode and Qt Creator
 .vscode/
 build/
 *.user
+.qt/
+
+# CMake
+.qmake2cmake
+venv/
+CMakeFiles/
+CMakeCache.txt
+*_autogen/
+Makefile
+cmake_install.cmake
+
+# Binaries
+src/cli/q3tod3_map
+src/gui/q3tod3_map_gui
+src/core/libq3tod3_map_core.so
