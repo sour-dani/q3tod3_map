@@ -20,12 +20,15 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      - name: Compile
-        shell: bash
+      - name: Create Makefiles
         run: |
           [ -e build ] || mkdir build
           cd build
           qmake6 ../
+
+      - name: Compile
+        working-directory: build
+        run: |
           make
 
       - name: Upload CLI artifact
@@ -65,15 +68,13 @@ jobs:
         shell: bash
         run: |
           [ -e build ] || mkdir build
-          cd build
+          cd
           qmake6 ../
-          make
 
       - name: Compile
         working-directory: build
         run: |
-          cat q3tod3_map.sln
-          msbuild q3tod3_map.sln
+          make
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
