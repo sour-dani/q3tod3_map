@@ -1,17 +1,13 @@
 qt_add_executable(q3tod3_map WIN32 MACOSX_BUNDLE
     main.cpp
 )
+
 target_include_directories(q3tod3_map PRIVATE
     ../core
 )
 
 target_compile_definitions(q3tod3_map PRIVATE
     APP_VERSION="${CMAKE_PROJECT_VERSION}"
-)
-
-target_link_libraries(q3tod3_map PRIVATE
-    Qt::Core
-    Qt::Gui
 )
 
 install(TARGETS q3tod3_map
@@ -24,4 +20,5 @@ qt_generate_deploy_app_script(
     FILENAME_VARIABLE deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
+
 install(SCRIPT ${deploy_script})
