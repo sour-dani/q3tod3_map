@@ -22,14 +22,11 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          [ -e build ] || mkdir build
-          cd build
-          cmake ../
+          cmake -B build
 
       - name: Compile
-        working-directory: build
         run: |
-          cmake --build . --config Release
+          cmake --build build --config Release
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
@@ -66,14 +63,11 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          If(!(test-path -PathType container "build")){New-Item -ItemType Directory -Path "build"}
-          cd build
-          cmake ../
+          cmake -B build
 
       - name: Compile
-        working-directory: build
         run: |
-          cmake --build . --config Release
+          cmake --build build --config Release
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7

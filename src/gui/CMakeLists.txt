@@ -3,6 +3,7 @@ qt_add_executable(q3tod3_map_gui WIN32 MACOSX_BUNDLE
     main.cpp
     mainwindow.cpp mainwindow.h mainwindow.ui
 )
+
 target_include_directories(q3tod3_map_gui PRIVATE
     ../core
 )
@@ -28,4 +29,5 @@ qt_generate_deploy_app_script(
     FILENAME_VARIABLE deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
+
 install(SCRIPT ${deploy_script})
