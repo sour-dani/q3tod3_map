@@ -21,13 +21,13 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      - name: Compile
-        shell: bash
+      - name: Create Makefiles
         run: |
-          [ -e build ] || mkdir build
-          cd build
-          qmake6 ../
-          make
+          cmake -B build
+
+      - name: Compile
+        run: |
+          cmake --build build --config Release
 
       - name: Upload CLI to release
         uses: softprops/action-gh-release@v1
@@ -64,13 +64,13 @@ jobs:
         with:
           arch: x64
 
-      - name: Compile
-        shell: bash
+      - name: Create Makefiles
         run: |
-          [ -e build ] || mkdir build
-          cd build
-          qmake6 ../
-          make
+          cmake -B build
+
+      - name: Compile
+        run: |
+          cmake --build build --config Release
 
       - name: Upload CLI to release
         uses: softprops/action-gh-release@v1
