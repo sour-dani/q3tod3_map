@@ -1,4 +1,4 @@
-add_library(q3tod3_map_core SHARED
+add_library(q3tod3_map_core
     q3tod3_map.cpp q3tod3_map.h
 )
 
