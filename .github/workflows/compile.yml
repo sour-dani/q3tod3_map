@@ -20,13 +20,16 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      - name: Create Makefiles
+      - name: Create Project Files
         run: |
-          cmake -B build
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
       - name: Compile
         run: |
-          cmake --build build --config Release
+          ninja install -C build
+          ls staging
+          ls staging/bin
+          ls staging/lib
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
@@ -63,11 +66,11 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          cmake -B build
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
       - name: Compile
         run: |
-          cmake --build build --config Release
+          ninja install -C build
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7

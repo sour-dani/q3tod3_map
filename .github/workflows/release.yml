@@ -21,12 +21,13 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      - name: Create Makefiles
+      - name: Create Project Files
         run: |
-          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
+
       - name: Compile
         run: |
-          cmake --build build --config Release
+          ninja install -C build
 
       - name: Upload CLI to release
         uses: softprops/action-gh-release@v1
@@ -55,8 +56,10 @@ jobs:
         uses: jurplel/install-qt-action@v4
         with:
           version: '6.4.2'
+          host: 'windows'
           target: 'desktop'
           arch: 'win64_msvc2022_64'
+          cache: true
 
       - name: Configure Dependencies
         uses: TheMrMilchmann/setup-msvc-dev@v4
@@ -70,9 +73,6 @@ jobs:
       - name: Compile
         run: |
           ninja install -C build
-          ls staging
-          ls staging/bin
-          ls staging/lib
 
       - name: Upload CLI to release
         uses: softprops/action-gh-release@v1
