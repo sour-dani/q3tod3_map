@@ -31,19 +31,11 @@ jobs:
           ls staging/bin
           ls staging/lib
 
-      - name: Upload CLI artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: q3tod3_map_cli-x86_64-gcc-linux
-          path: build/src/cli/q3tod3_map
-          retention-days: 1
-          if-no-files-found: error
-
       - name: Upload GUI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map_gui-x86_64-gcc-linux
-          path: build/src/gui/q3tod3_map_gui
+          name: q3tod3_map-bundle-x86_64-gcc-linux
+          path: staging
           retention-days: 1
           if-no-files-found: error
     
@@ -75,15 +67,7 @@ jobs:
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map_cli-x86_64-msvc-windows
-          path: build/Release/q3tod3_map.exe
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload GUI artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: q3tod3_map_gui-x86_64-msvc-windows
-          path: build/Release/q3tod3_map_gui.exe
+          name: q3tod3_map-bundle-x86_64-msvc-windows
+          path: staging
           retention-days: 1
           if-no-files-found: error
