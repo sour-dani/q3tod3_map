@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-// #include "q3tod3_map.h" // broken for some reason
-#include "q3tod3_map.cpp"
+#include "q3tod3_map.h"
 
 int main(int argc, char* argv[]) {
     std::string usage = "Usage: q3tod3_map input.map [output.map]";

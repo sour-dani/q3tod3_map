@@ -5,9 +5,9 @@
 #include <QListWidget>
 #include <QDebug>
 #include <Qt>
-#include "q3tod3_map.cpp"
 #include <QMessageBox>
 #include <QProgressDialog>
+#include "q3tod3_map.h"
 
 // TODO: Add options area
 //    - Option to prevent popups

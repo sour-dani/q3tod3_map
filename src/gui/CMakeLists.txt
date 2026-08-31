@@ -17,6 +17,7 @@ target_link_libraries(q3tod3_map_gui PRIVATE
     Qt::Core
     Qt::Gui
     Qt::Widgets
+    q3tod3_map_core
 )
 
 install(TARGETS q3tod3_map_gui
