@@ -65,11 +65,14 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
       - name: Compile
         run: |
-          cmake --build build --config Release
+          ninja install -C build
+          ls staging
+          ls staging/bin
+          ls staging/lib
 
       - name: Upload CLI to release
         uses: softprops/action-gh-release@v1
