@@ -17,3 +17,4 @@ cmake_install.cmake
 src/cli/q3tod3_map
 src/gui/q3tod3_map_gui
 src/core/libq3tod3_map_core.so
+staging
