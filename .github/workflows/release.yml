@@ -23,7 +23,7 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          cmake -B build
+          cmake -GNinja -DCMAKE_BUILD_TYPE=Release
 
       - name: Compile
         run: |
@@ -66,7 +66,7 @@ jobs:
 
       - name: Create Makefiles
         run: |
-          cmake -B build
+          cmake -GNinja -DCMAKE_BUILD_TYPE=Release
 
       - name: Compile
         run: |
