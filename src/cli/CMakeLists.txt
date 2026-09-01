@@ -1,4 +1,4 @@
-add_executable(q3tod3_map WIN32 MACOSX_BUNDLE
+qt_add_executable(q3tod3_map WIN32 MACOSX_BUNDLE
     main.cpp
     ../core/q3tod3_map.cpp
     ../core/q3tod3_map.h
