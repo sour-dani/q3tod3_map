@@ -57,7 +57,7 @@ into Doom 3 and Quake 4 map files.</string>
     <item>
      <widget class="QLabel" name="daniLbl">
       <property name="text">
-       <string>Qt GUI by Sour Dani
+       <string>Qt GUI, modified Core, and modified CLI by Sour Dani
 https://sourdani.dev</string>
       </property>
       <property name="alignment">
