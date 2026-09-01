@@ -27,9 +27,6 @@ jobs:
       - name: Compile
         run: |
           ninja install -C build
-          ls staging
-          ls staging/bin
-          ls staging/lib
 
       - name: Upload GUI artifact
         uses: actions/upload-artifact@v7
