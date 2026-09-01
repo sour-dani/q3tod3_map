@@ -1,7 +1,13 @@
 qt_add_executable(q3tod3_map_gui WIN32 MACOSX_BUNDLE
-    about.cpp about.h about.ui
     main.cpp
-    mainwindow.cpp mainwindow.h mainwindow.ui
+    about.cpp
+    about.h
+    about.ui
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
+    ../core/q3tod3_map.cpp
+    ../core/q3tod3_map.h
 )
 
 target_include_directories(q3tod3_map_gui PRIVATE
@@ -17,7 +23,6 @@ target_link_libraries(q3tod3_map_gui PRIVATE
     Qt::Core
     Qt::Gui
     Qt::Widgets
-    q3tod3_map_core
 )
 
 install(TARGETS q3tod3_map_gui

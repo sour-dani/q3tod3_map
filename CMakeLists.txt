@@ -8,6 +8,5 @@ find_package(Qt6 REQUIRED COMPONENTS Gui Widgets)
 
 qt_standard_project_setup()
 
-add_subdirectory(src/core)
 add_subdirectory(src/gui)
 add_subdirectory(src/cli)
