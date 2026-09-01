@@ -48,10 +48,15 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2022_64'
 
-      - name: Configure Dependencies
-        uses: TheMrMilchmann/setup-msvc-dev@v4
+      - uses: msys2/setup-msys2@v2
         with:
-          arch: x64
+          update: true
+          install: |
+            base-devel
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-toolchain
+
 
       - name: Create Makefiles
         run: |
