@@ -64,12 +64,12 @@ jobs:
 
       - name: Compile
         run: |
-          ninja install -C build
+          cmake --build build --config Release -t q3tod3_map
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
           name: q3tod3_map-bundle-x86_64-msvc-windows
-          path: staging
+          path: build/src/cli/q3to3d_map
           retention-days: 1
           if-no-files-found: error
