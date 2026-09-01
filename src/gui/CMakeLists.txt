@@ -20,9 +20,9 @@ target_compile_definitions(q3tod3_map_gui PRIVATE
 )
 
 target_link_libraries(q3tod3_map_gui PRIVATE
-    Qt::Core
-    Qt::Gui
-    Qt::Widgets
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
 )
 
 install(TARGETS q3tod3_map_gui
