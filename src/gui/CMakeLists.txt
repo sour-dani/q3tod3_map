@@ -15,7 +15,7 @@ target_include_directories(q3tod3_map_gui PRIVATE
 )
 
 target_compile_definitions(q3tod3_map_gui PRIVATE
-    APP_VERSION="${CMAKE_PROJECT_VERSION}"
+    VERSION="${CMAKE_PROJECT_VERSION}"
     QT_DISABLE_DEPRECATED_BEFORE=0x060000
 )
 

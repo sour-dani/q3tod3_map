@@ -9,12 +9,8 @@ int main(int argc, char* argv[]) {
     std::string infile = "";
     std::string outfile = "";
 
-    std::cout << "q3tod3_map " << APP_VERSION << " ";
-#ifdef __WIN64__
-    std::cout << "(x86_64-pc-windows-msvc)";
-#elif __linux__
-    std::cout << "(x86_64-unknown-linux-gnu)";
-#endif
+    std::cout << "q3tod3_map " << VERSION << " ";
+    std::cout << COMPILE_INFO;
     std::cout << std::endl;
     std::cout << "Copyright (C) 2025 motorsep - License GPLv3" << std::endl;
     std::cout << "Modified by Sour Dani" << std::endl;
