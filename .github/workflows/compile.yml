@@ -28,11 +28,11 @@ jobs:
         run: |
           ninja install -C build
 
-      - name: Upload GUI artifact
+      - name: Upload CLI and GUI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-bundle-x86_64-gcc-linux
-          path: staging
+          name: q3tod3_map-binaries-x86_64-gcc-linux
+          path: staging/bin
           retention-days: 1
           if-no-files-found: error
     
@@ -69,7 +69,7 @@ jobs:
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map-bundle-x86_64-msvc-windows
+          name: q3tod3_map-binaries-x86_64-mingw-windows
           path: staging
           retention-days: 1
           if-no-files-found: error
