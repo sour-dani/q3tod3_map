@@ -7,3 +7,4 @@
 #define LEGACY_AUTHOR               "${LEGACY_AUTHOR}"
 #define COMPILE_INFO                "${COMPILE_INFO}"
 #define PROJECT_TITLE               PROJECT_NAME " v" PROJECT_VERSION " (" COMPILE_INFO ")"
+
