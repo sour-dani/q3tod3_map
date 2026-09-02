@@ -2,18 +2,18 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include "config.h"
 #include "q3tod3_map.h"
 
 int main(int argc, char* argv[]) {
+
     std::string usage = "Usage: q3tod3_map input.map [output.map]";
     std::string infile = "";
     std::string outfile = "";
 
-    std::cout << "q3tod3_map " << VERSION << " ";
-    std::cout << COMPILE_INFO;
-    std::cout << std::endl;
-    std::cout << "Copyright (C) 2025 motorsep - License GPLv3" << std::endl;
-    std::cout << "Modified by Sour Dani" << std::endl;
+    std::cout << PROJECT_TITLE << std::endl;
+    std::cout << "Copyright (C) 2025 " << LEGACY_AUTHOR << " - License GPLv3" << std::endl;
+    std::cout << "Modified by " << PROJECT_ORGANIZATION_NAME << std::endl;
     std::cout << std::endl;
 
     if (argc < 2 || argc > 3) {

@@ -6,16 +6,16 @@ qt_add_executable(q3tod3_map_gui WIN32 MACOSX_BUNDLE
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
-    ../core/q3tod3_map.cpp
-    ../core/q3tod3_map.h
+    ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.h
+    ${CMAKE_SOURCE_DIR}/src/core/config.h
 )
 
 target_include_directories(q3tod3_map_gui PRIVATE
-    ../core
+    ${CMAKE_SOURCE_DIR}/src/core
 )
 
 target_compile_definitions(q3tod3_map_gui PRIVATE
-    VERSION="${CMAKE_PROJECT_VERSION}"
     QT_DISABLE_DEPRECATED_BEFORE=0x060000
 )
 
