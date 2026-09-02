@@ -18,14 +18,16 @@ int main(int argc, char* argv[]) {
 
     if (argc < 2 || argc > 3) {
         std::cout << usage << std::endl;
-        return 1;
+        return 0;
     } else {
         infile = argv[1];
     }
     if (argc == 2) {
         if (infile == "help" || infile == "-h" || infile == "--help") {
             std::cout << usage << std::endl;
-            return 1;
+            std::cout << "Press Enter to exit...";
+            std::cin.get();
+            return 0;
         } else {
             std::string map_file = std::filesystem::path(infile).filename().generic_string();
             outfile = std::filesystem::path(infile).remove_filename().generic_string();
@@ -45,6 +47,8 @@ int main(int argc, char* argv[]) {
     } catch(std::exception& e) {
         std::cerr << "|!|ERROR|!| Unexpected exception caught: " << e.what() << std::endl;
     }
-
+    std::cin.ignore('\n');
+    std::cout << "\n\n Press Enter to continue: ";
+    std::cin.get();
     return 0;
 }
