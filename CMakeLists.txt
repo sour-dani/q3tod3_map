@@ -14,5 +14,5 @@ configure_file("${CMAKE_SOURCE_DIR}/src/core/config.h.in" "${CMAKE_SOURCE_DIR}/s
 find_package(Qt6 REQUIRED COMPONENTS Gui Widgets)
 qt_standard_project_setup()
 
-add_subdirectory(src/gui)
-add_subdirectory(src/cli)
+include(src/gui/_gui.cmake)
+include(src/cli/_cli.cmake)
