@@ -1,16 +1,15 @@
 qt_add_executable(q3tod3_map_gui WIN32 MACOSX_BUNDLE
-    main.cpp
-    about.cpp
-    about.h
-    about.ui
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    ${CMAKE_SOURCE_DIR}/src/gui/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/about.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/about.h
+    ${CMAKE_SOURCE_DIR}/src/gui/about.ui
+    ${CMAKE_SOURCE_DIR}/src/gui/mainwindow.cpp
+    ${CMAKE_SOURCE_DIR}/src/gui/mainwindow.h
+    ${CMAKE_SOURCE_DIR}/src/gui/mainwindow.ui
     ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.cpp
     ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.h
     ${CMAKE_SOURCE_DIR}/src/core/config.h
 )
-
 target_include_directories(q3tod3_map_gui PRIVATE
     ${CMAKE_SOURCE_DIR}/src/core
 )
