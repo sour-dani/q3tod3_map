@@ -8,8 +8,7 @@ on:
 run-name: Release ${{ inputs.tag }}
 
 jobs:
-  release-linux:
-    name: Release Linux ${{ inputs.tag }}
+  build-linux:
     runs-on: ubuntu-22.04
 
     steps:
@@ -29,29 +28,19 @@ jobs:
         run: |
           ninja install -C build
 
-      - name: Upload CLI to release
-        uses: softprops/action-gh-release@v1
+      - name: Upload CLI and GUI artifacts
+        uses: actions/upload-artifact@v7
         with:
-          files: build/src/cli/q3tod3_map
-          tag_name: ${{ inputs.tag }}
-          draft: false
-          prerelease: true
+          name: q3tod3_map-binaries-x86_64-gcc-linux
+          path: staging/bin
+          retention-days: 1
+          if-no-files-found: error
 
-      - name: Upload GUI to release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/src/gui/q3tod3_map_gui
-          tag_name: ${{ inputs.tag }}
-          draft: false
-          prerelease: true
-
-  release-windows:
-    name: Release Windows ${{ inputs.tag }}
+  build-windows:
     runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v7
-
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -59,12 +48,18 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw'
 
-      - name: Configure Dependencies
-        uses: TheMrMilchmann/setup-msvc-dev@v4
+      - uses: msys2/setup-msys2@v2
         with:
-          arch: x64
+          msystem: 'UCRT64'
+          update: true
+          install: |
+            base-devel
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-toolchain
 
-      - name: Create Makefiles
+
+      - name: Create Project Files
         run: |
           cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
@@ -72,18 +67,28 @@ jobs:
         run: |
           ninja install -C build
 
-      - name: Upload CLI to release
+      - name: Upload CLI and GUI artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: q3tod3_map-binaries-x86_64-mingw-windows
+          path: staging
+          retention-days: 1
+          if-no-files-found: error
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - build-linux
+      - build-windows
+    steps:
+      - uses: actions/download-artifact@v8
+
+      - name: Upload Artifacts to Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/src/cli/q3tod3_map.exe
+          files: *.zip
           tag_name: ${{ inputs.tag }}
-          draft: false
+          draft: true
           prerelease: true
 
-      - name: Upload GUI to release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/src/gui/q3tod3_map_gui.exe
-          tag_name: ${{ inputs.tag }}
-          draft: false
-          prerelease: true
+

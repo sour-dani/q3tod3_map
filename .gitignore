@@ -4,6 +4,7 @@ build/
 out/
 *.user
 .qt/
+*.autosave
 
 # CMake
 .qmake2cmake/
