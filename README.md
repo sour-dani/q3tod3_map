@@ -46,3 +46,6 @@ make
 **motorsep** - q3tod3_map creator
 
 **Sour Dani** - q3tod4_map_gui creator and q3tod3_map (core and cli) modifications
+
+### Special thanks
+**craftablescience** - For CMake help and inspiration from MareTF CLI
