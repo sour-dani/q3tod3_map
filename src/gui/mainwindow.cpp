@@ -5,9 +5,9 @@
 #include <QListWidget>
 #include <QDebug>
 #include <Qt>
-#include "q3tod3_map.cpp"
 #include <QMessageBox>
 #include <QProgressDialog>
+#include "q3tod3_map.h"
 
 // TODO: Add options area
 //    - Option to prevent popups
@@ -72,19 +72,26 @@ void MainWindow::on_convertBtn_clicked()
                 convert_map(infile, outfile);
                 row++;
             }
-            catch (const std::string msg) {
+            catch (std::pair<std::string, std::string>& error) {
                 bad_maps += infile + "\n";
                 ui->mapListWidget->takeItem(row);
                 qDebug() << "failed: " << QString::fromStdString(infile);
                 QMessageBox::warning(
                     this,
-                    tr("Error converting map"),
-                    tr(msg.c_str()),
+                    "Error converting map",
+                    (error.first + "\n" + error.second).c_str(),
                     QMessageBox::Close
                 );
                 errors++;
                 ui->fileCountNumberLabel->setText(QString::number(ui->mapListWidget->count()));
                 QApplication::processEvents();
+            } catch(std::exception& e) {
+                QMessageBox::warning(
+                    this,
+                    "Unexpected exception caught",
+                    e.what(),
+                    QMessageBox::Close
+                );
             }
         }
         qDebug() << "set value to the max";

@@ -1,3 +1,23 @@
+# VSCode, Visual Studio and Qt Creator
 .vscode/
 build/
+out/
 *.user
+.qt/
+*.autosave
+
+# CMake
+.qmake2cmake/
+venv/
+CMakeFiles/
+CMakeCache.txt
+*_autogen/
+Makefile
+cmake_install.cmake
+src/core/config.h
+
+# Binaries
+*.so
+*.dll
+*.exe
+staging/

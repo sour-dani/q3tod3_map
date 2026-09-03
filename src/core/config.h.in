@@ -1,0 +1,9 @@
+#pragma once
+
+#define PROJECT_NAME                "${PROJECT_NAME}"
+#define PROJECT_VERSION             "${PROJECT_VERSION}"
+#define PROJECT_GITHUB_URL          "${PROJECT_GITHUB_URL}"
+#define PROJECT_ORGANIZATION_NAME   "${PROJECT_ORGANIZATION_NAME}"
+#define LEGACY_AUTHOR               "${LEGACY_AUTHOR}"
+#define COMPILE_INFO                "${COMPILE_INFO}"
+#define PROJECT_TITLE               PROJECT_NAME " v" PROJECT_VERSION " (" COMPILE_INFO ")"

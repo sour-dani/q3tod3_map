@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include "config.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +19,9 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
-    QCoreApplication::setApplicationVersion(APP_VERSION);
+    QCoreApplication::setApplicationVersion(PROJECT_VERSION);
+    QCoreApplication::setApplicationName(PROJECT_NAME);
+    QCoreApplication::setOrganizationName(PROJECT_ORGANIZATION_NAME);
     w.show();
     return a.exec();
 }

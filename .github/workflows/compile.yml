@@ -20,27 +20,19 @@ jobs:
             version: '6.4.2'
             target: 'desktop'
 
-      - name: Compile
-        shell: bash
+      - name: Create Project Files
         run: |
-          [ -e build ] || mkdir build
-          cd build
-          qmake6 ../
-          make
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
-      - name: Upload CLI artifact
+      - name: Compile
+        run: |
+          ninja install -C build
+
+      - name: Upload CLI and GUI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map_cli-x86_64-gcc-linux
-          path: build/src/cli/q3tod3_map
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload GUI artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: q3tod3_map_gui-x86_64-gcc-linux
-          path: build/src/gui/q3tod3_map_gui
+          name: q3tod3_map-binaries-x86_64-gcc-linux
+          path: staging/bin
           retention-days: 1
           if-no-files-found: error
     
@@ -52,40 +44,33 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.8.*'
+          version: '6.4.2'
           target: 'desktop'
-          arch: 'win64_msvc2022_64'
+          arch: 'win64_mingw'
 
-      - name: Configure Dependencies
-        uses: TheMrMilchmann/setup-msvc-dev@v4
+      - uses: msys2/setup-msys2@v2
         with:
-          arch: x64
+          msystem: 'UCRT64'
+          update: true
+          install: |
+            base-devel
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-toolchain
 
-      - name: Create Makefiles
-        shell: bash
+
+      - name: Create Project Files
         run: |
-          [ -e build ] || mkdir build
-          cd build
-          qmake6 -tp vc ../
+          cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
       - name: Compile
-        working-directory: build
         run: |
-          cat q3tod3_map.sln
-          msbuild q3tod3_map.sln
+          ninja install -C build
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: q3tod3_map_cli-x86_64-msvc-windows
-          path: build/src/cli/q3tod3_map.exe
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload GUI artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: q3tod3_map_gui-x86_64-msvc-windows
-          path: build/src/gui/q3tod3_map_gui.exe
+          name: q3tod3_map-binaries-x86_64-mingw-windows
+          path: staging
           retention-days: 1
           if-no-files-found: error
