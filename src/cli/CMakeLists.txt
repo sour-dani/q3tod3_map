@@ -1,4 +1,4 @@
-add_executable(q3tod3_map WIN32 MACOSX_BUNDLE
+add_executable(q3tod3_map MACOSX_BUNDLE
     main.cpp
     ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.cpp
     ${CMAKE_SOURCE_DIR}/src/core/q3tod3_map.h

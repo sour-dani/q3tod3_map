@@ -56,10 +56,10 @@ jobs:
             base-devel
             mingw-w64-ucrt-x86_64-cmake
             mingw-w64-ucrt-x86_64-ninja
-            mingw-w64-x86_64-toolchain
+            mingw-w64-ucrt-x86_64-toolchain
 
 
-      - name: Create Makefiles
+      - name: Create Project Files
         run: |
           cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
 
