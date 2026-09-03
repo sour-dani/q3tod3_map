@@ -21,26 +21,27 @@ q3tod4_map.exe input.map
 ## Building
 
 ### Windows
-- Open `q3tod3_map.pro` in Visual Studio 2022 using [Qt VS Tools](https://doc.qt.io/qtvstools/qtvstools-getting-started.html)
+- Open `CMakeLists.txt` in Visual Studio 2022 using [Qt VS Tools](https://doc.qt.io/qtvstools/qtvstools-getting-started.html) and [C++ CMake tools for Windows](https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170)
 
    **OR**
 
-- Open `q3tod3_map.pro` in Qt Creator
+- Open `CMakeLists.txt` in Qt Creator
 
 ### Linux
-- Open `q3tod3_map.pro` in Qt Creator
+- Open `CMakeLists.txt` in Qt Creator
 
 ### Command Line
 
 ```bash
-qmake6 -o build
-cd build
-make
+cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=staging
+ninja install -C build
 ```
 
 ### Binaries
-- CLI: `build/src/cli/q3tod3_map.exe`
-- GUI: `build/src/gui/q3tod3_map_gui.exe`
+- CLI: `staging/bin/q3tod3_map.exe`
+- GUI: `staging/bin/q3tod3_map_gui.exe`
+- Lbraries: `staging/bin` + `staging/plugins`
+- Translations (unused): `staging/translations`
 
 ## Credits
 **motorsep** - q3tod3_map creator

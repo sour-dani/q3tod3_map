@@ -1,11 +1,12 @@
-# VSCode and Qt Creator
+# VSCode, Visual Studio and Qt Creator
 .vscode/
 build/
+out/
 *.user
 .qt/
 
 # CMake
-.qmake2cmake
+.qmake2cmake/
 venv/
 CMakeFiles/
 CMakeCache.txt
@@ -17,5 +18,5 @@ src/core/config.h
 # Binaries
 *.so
 *.dll
-staging
-
+*.exe
+staging/
