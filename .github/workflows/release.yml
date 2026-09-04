@@ -89,8 +89,6 @@ jobs:
       - name: Check for files
         run: |
           ls
-          ls q3tod3_map
-          ls q3tod3_map/q3tod3_map-binaries-x86_64-gcc-linux
           ls q3tod3_map-binaries-x86_64-gcc-linux
 
       - name: Upload Artifacts to Release
